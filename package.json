@@ -13,7 +13,8 @@
   "license": "ISC",
   "browser": "dist/index.js",
   "dependencies": {
-    "chromotome": "^1.15.2",
+    "bekk-chromotome": "^1.0.2",
+    "chromotome": "^1.15.3",
     "dat.gui": "^0.7.6"
   },
   "devDependencies": {
