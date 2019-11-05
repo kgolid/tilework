@@ -2821,7 +2821,7 @@
     p.fill(c2);
     p.rect(x, y, dim, dim);
     p.fill(c1);
-    p.circle(x + center, y + center, center, center);
+    p.ellipse(x + center, y + center, dim, dim);
   };
 
   const northwest_quarter_circle = (p, x, y, dim, c1, c2) => {
