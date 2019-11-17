@@ -100,6 +100,42 @@ const west_half_circle = (p, x, y, dim, c1, c2) => {
   p.arc(x, y + dim / 2, dim, dim, 3 * p.HALF_PI, p.HALF_PI, p.PIE);
 };
 
+const two_quarter_circle_stroke_asc = (p, x, y, dim, c1, c2) => {
+  p.fill(c2);
+  p.rect(x, y, dim, dim);
+  p.fill(c1);
+  p.arc(x + dim, y, dim + 6, dim + 6, p.HALF_PI, p.PI, p.PIE);
+  p.fill(c2);
+  p.arc(x + dim, y, dim - 6, dim - 6, p.HALF_PI, p.PI, p.PIE);
+  p.fill(c1);
+  p.arc(x, y + dim, dim + 6, dim + 6, -p.HALF_PI, 0, p.PIE);
+  p.fill(c2);
+  p.arc(x, y + dim, dim - 6, dim - 6, -p.HALF_PI, 0, p.PIE);
+};
+
+const two_quarter_circle_stroke_desc = (p, x, y, dim, c1, c2) => {
+  p.fill(c2);
+  p.rect(x, y, dim, dim);
+  p.fill(c1);
+  p.arc(x, y, dim + 6, dim + 6, 0, p.HALF_PI, p.PIE);
+  p.fill(c2);
+  p.arc(x, y, dim - 6, dim - 6, 0, p.HALF_PI, p.PIE);
+  p.fill(c1);
+  p.arc(x + dim, y + dim, dim + 6, dim + 6, -p.PI, -p.HALF_PI, p.PIE);
+  p.fill(c2);
+  p.arc(x + dim, y + dim, dim - 6, dim - 6, -p.PI, -p.HALF_PI, p.PIE);
+};
+
+const four_quarter_circle = (p, x, y, dim, c1, c2) => {
+  p.fill(c1);
+  p.rect(x, y, dim, dim);
+  p.fill(c2);
+  p.arc(x, y, dim - 6, dim - 6, 0, p.HALF_PI, p.PIE);
+  p.arc(x + dim, y + dim, dim - 6, dim - 6, -p.PI, -p.HALF_PI, p.PIE);
+  p.arc(x + dim, y, dim - 6, dim - 6, p.HALF_PI, p.PI, p.PIE);
+  p.arc(x, y + dim, dim - 6, dim - 6, -p.HALF_PI, 0, p.PIE);
+};
+
 const tilted_cross = (p, x, y, dim, c1, c2) => {
   const u = dim / 5;
   p.fill(c1);
@@ -205,6 +241,12 @@ const crosses = [tilted_cross];
 const arrows = [north_arrow, south_arrow, west_arrow, east_arrow];
 const zigzags = [north_zig, south_zig, west_zig, east_zig];
 
+const two_quarters = [
+  two_quarter_circle_stroke_asc,
+  two_quarter_circle_stroke_desc,
+  four_quarter_circle
+];
+
 export default {
   fills,
   halves,
@@ -212,6 +254,7 @@ export default {
   circles,
   quarter_circles,
   half_circles,
+  two_quarters,
   arrows,
   zigzags,
   crosses

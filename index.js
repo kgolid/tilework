@@ -7,7 +7,7 @@ const opts = {
   cell_scale: 100,
   cell_padding: 0,
   grid_size: 7,
-  palette_name: 'bekk01m',
+  palette_name: 'sprague',
   stroke_weight: 0
 };
 
@@ -18,7 +18,8 @@ const tile_opts = {
   halves: true,
   circles: true,
   quarter_circles: true,
-  half_circles: true
+  half_circles: true,
+  two_quarters: false
 };
 
 let sketch = function(p) {
@@ -53,7 +54,7 @@ let sketch = function(p) {
     f0.add(opts, 'stroke_weight', 0, 10, 1);
     const f1 = gui.addFolder('Tilesets');
     f1.open();
-    f1.add(tile_opts, 'mode', ['crosses', 'arrows', 'zigzags', 'geometry']);
+    f1.add(tile_opts, 'mode', ['crosses', 'arrows', 'zigzags', 'geometry', 'squigglies']);
     f1.add(tile_opts, 'filled');
     f1.add(tile_opts, 'diagonals');
     f1.add(tile_opts, 'halves');
@@ -101,6 +102,7 @@ let sketch = function(p) {
     if (tile_opts.mode === 'crosses') return tilesets.crosses;
     if (tile_opts.mode === 'arrows') return tilesets.arrows;
     if (tile_opts.mode === 'zigzags') return tilesets.zigzags;
+    if (tile_opts.mode === 'squigglies') return tilesets.two_quarters;
     if (tile_opts.mode === 'geometry') {
       let tiles = [].concat(
         tile_opts.filled ? tilesets.fills : [],
