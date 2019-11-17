@@ -2773,7 +2773,6 @@
     });
   }
   var GUI$1 = GUI;
-  //# sourceMappingURL=dat.gui.module.js.map
 
   const filled = (p, x, y, dim, c1, c2) => {
     p.fill(c1);
@@ -2875,6 +2874,42 @@
     p.rect(x, y, dim, dim);
     p.fill(c1);
     p.arc(x, y + dim / 2, dim, dim, 3 * p.HALF_PI, p.HALF_PI, p.PIE);
+  };
+
+  const two_quarter_circle_stroke_asc = (p, x, y, dim, c1, c2) => {
+    p.fill(c2);
+    p.rect(x, y, dim, dim);
+    p.fill(c1);
+    p.arc(x + dim, y, dim + 6, dim + 6, p.HALF_PI, p.PI, p.PIE);
+    p.fill(c2);
+    p.arc(x + dim, y, dim - 6, dim - 6, p.HALF_PI, p.PI, p.PIE);
+    p.fill(c1);
+    p.arc(x, y + dim, dim + 6, dim + 6, -p.HALF_PI, 0, p.PIE);
+    p.fill(c2);
+    p.arc(x, y + dim, dim - 6, dim - 6, -p.HALF_PI, 0, p.PIE);
+  };
+
+  const two_quarter_circle_stroke_desc = (p, x, y, dim, c1, c2) => {
+    p.fill(c2);
+    p.rect(x, y, dim, dim);
+    p.fill(c1);
+    p.arc(x, y, dim + 6, dim + 6, 0, p.HALF_PI, p.PIE);
+    p.fill(c2);
+    p.arc(x, y, dim - 6, dim - 6, 0, p.HALF_PI, p.PIE);
+    p.fill(c1);
+    p.arc(x + dim, y + dim, dim + 6, dim + 6, -p.PI, -p.HALF_PI, p.PIE);
+    p.fill(c2);
+    p.arc(x + dim, y + dim, dim - 6, dim - 6, -p.PI, -p.HALF_PI, p.PIE);
+  };
+
+  const four_quarter_circle = (p, x, y, dim, c1, c2) => {
+    p.fill(c1);
+    p.rect(x, y, dim, dim);
+    p.fill(c2);
+    p.arc(x, y, dim - 6, dim - 6, 0, p.HALF_PI, p.PIE);
+    p.arc(x + dim, y + dim, dim - 6, dim - 6, -p.PI, -p.HALF_PI, p.PIE);
+    p.arc(x + dim, y, dim - 6, dim - 6, p.HALF_PI, p.PI, p.PIE);
+    p.arc(x, y + dim, dim - 6, dim - 6, -p.HALF_PI, 0, p.PIE);
   };
 
   const tilted_cross = (p, x, y, dim, c1, c2) => {
@@ -2982,6 +3017,12 @@
   const arrows = [north_arrow, south_arrow, west_arrow, east_arrow];
   const zigzags = [north_zig, south_zig, west_zig, east_zig];
 
+  const two_quarters = [
+    two_quarter_circle_stroke_asc,
+    two_quarter_circle_stroke_desc,
+    four_quarter_circle
+  ];
+
   var tilesets = {
     fills,
     halves,
@@ -2989,6 +3030,7 @@
     circles,
     quarter_circles,
     half_circles,
+    two_quarters,
     arrows,
     zigzags,
     crosses
@@ -3000,7 +3042,7 @@
     cell_scale: 100,
     cell_padding: 0,
     grid_size: 7,
-    palette_name: 'bekk01m',
+    palette_name: 'sprague',
     stroke_weight: 0
   };
 
@@ -3011,7 +3053,8 @@
     halves: true,
     circles: true,
     quarter_circles: true,
-    half_circles: true
+    half_circles: true,
+    two_quarters: false
   };
 
   let sketch = function(p) {
@@ -3046,7 +3089,7 @@
       f0.add(opts, 'stroke_weight', 0, 10, 1);
       const f1 = gui$$1.addFolder('Tilesets');
       f1.open();
-      f1.add(tile_opts, 'mode', ['crosses', 'arrows', 'zigzags', 'geometry']);
+      f1.add(tile_opts, 'mode', ['crosses', 'arrows', 'zigzags', 'geometry', 'squigglies']);
       f1.add(tile_opts, 'filled');
       f1.add(tile_opts, 'diagonals');
       f1.add(tile_opts, 'halves');
@@ -3094,6 +3137,7 @@
       if (tile_opts.mode === 'crosses') return tilesets.crosses;
       if (tile_opts.mode === 'arrows') return tilesets.arrows;
       if (tile_opts.mode === 'zigzags') return tilesets.zigzags;
+      if (tile_opts.mode === 'squigglies') return tilesets.two_quarters;
       if (tile_opts.mode === 'geometry') {
         let tiles = [].concat(
           tile_opts.filled ? tilesets.fills : [],

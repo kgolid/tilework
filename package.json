@@ -15,7 +15,7 @@
   "triangle": "dist/index-tri.js",
   "dependencies": {
     "bekk-chromotome": "^1.0.2",
-    "chromotome": "^1.15.3",
+    "chromotome": "^1.15.5",
     "dat.gui": "^0.7.6"
   },
   "devDependencies": {

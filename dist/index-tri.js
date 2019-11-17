@@ -2773,7 +2773,6 @@
     });
   }
   var GUI$1 = GUI;
-  //# sourceMappingURL=dat.gui.module.js.map
 
   const start_ring = 0;
   const rings = 3;
