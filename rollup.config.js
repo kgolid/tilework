@@ -10,5 +10,13 @@ export default [
       format: 'umd'
     },
     plugins: [resolve(), commonjs()]
+  },
+  {
+    input: 'index-tri.js',
+    output: {
+      file: pkg.triangle,
+      format: 'umd'
+    },
+    plugins: [resolve(), commonjs()]
   }
 ];

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "browser": "dist/index.js",
+  "triangle": "dist/index-tri.js",
   "dependencies": {
     "bekk-chromotome": "^1.0.2",
     "chromotome": "^1.15.3",
