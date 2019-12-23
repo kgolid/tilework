@@ -1,7 +1,7 @@
 //import * as tome from 'chromotome';
 import * as tome from 'bekk-chromotome';
 import * as dat from 'dat.gui';
-import tilesets from './tiles'; // {fills, diagonals, halves, quarter_circles, half_circles, circles}
+import tilesets from './tiles';
 
 const opts = {
   cell_scale: 100,
@@ -20,7 +20,6 @@ const tile_opts = {
   small_circles: true,
   quarter_circles: true,
   half_circles: true,
-  two_quarters: false
   donuts: false
 };
 
@@ -115,7 +114,7 @@ let sketch = function(p) {
         tile_opts.circles ? tilesets.circles : [],
         tile_opts.small_circles ? tilesets.small_circles : [],
         tile_opts.half_circles ? tilesets.half_circles : [],
-        tile_opts.quarter_circles ? tilesets.quarter_circles : []
+        tile_opts.quarter_circles ? tilesets.quarter_circles : [],
         tile_opts.donuts ? tilesets.donuts : []
       );
 
