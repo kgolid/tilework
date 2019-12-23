@@ -47,6 +47,24 @@ const circle = (p, x, y, dim, c1, c2) => {
   p.ellipse(x + center, y + center, dim, dim);
 };
 
+const small_circle = (p, x, y, dim, c1, c2) => {
+  const center = dim / 2;
+  p.fill(c2);
+  p.rect(x, y, dim, dim);
+  p.fill(c1);
+  p.ellipse(x + center, y + center, dim / 2, dim / 2);
+};
+
+const outline_circle = (p, x, y, dim, c1, c2) => {
+  const center = dim / 2;
+  p.fill(c2);
+  p.rect(x, y, dim, dim);
+  p.fill(c1);
+  p.ellipse(x + center, y + center, dim, dim);
+  p.fill(c2);
+  p.ellipse(x + center, y + center, dim / 2, dim / 2);
+};
+
 const northwest_quarter_circle = (p, x, y, dim, c1, c2) => {
   p.fill(c2);
   p.rect(x, y, dim, dim);
@@ -224,6 +242,9 @@ const halves = [vertical_half, horizontal_half];
 const diagonals = [diagonal_asc, diagonal_desc];
 
 const circles = [circle];
+const small_circles = [small_circle];
+const donuts = [outline_circle];
+
 const quarter_circles = [
   northwest_quarter_circle,
   northeast_quarter_circle,
@@ -252,6 +273,8 @@ export default {
   halves,
   diagonals,
   circles,
+  small_circles,
+  donuts,
   quarter_circles,
   half_circles,
   two_quarters,

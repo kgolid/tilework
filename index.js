@@ -17,9 +17,11 @@ const tile_opts = {
   diagonals: true,
   halves: true,
   circles: true,
+  small_circles: true,
   quarter_circles: true,
   half_circles: true,
   two_quarters: false
+  donuts: false
 };
 
 let sketch = function(p) {
@@ -59,8 +61,10 @@ let sketch = function(p) {
     f1.add(tile_opts, 'diagonals');
     f1.add(tile_opts, 'halves');
     f1.add(tile_opts, 'circles');
+    f1.add(tile_opts, 'small_circles');
     f1.add(tile_opts, 'half_circles');
     f1.add(tile_opts, 'quarter_circles');
+    f1.add(tile_opts, 'donuts');
   };
 
   p.draw = function() {
@@ -109,8 +113,10 @@ let sketch = function(p) {
         tile_opts.halves ? tilesets.halves : [],
         tile_opts.diagonals ? tilesets.diagonals : [],
         tile_opts.circles ? tilesets.circles : [],
+        tile_opts.small_circles ? tilesets.small_circles : [],
         tile_opts.half_circles ? tilesets.half_circles : [],
         tile_opts.quarter_circles ? tilesets.quarter_circles : []
+        tile_opts.donuts ? tilesets.donuts : []
       );
 
       return tiles.length === 0 ? tilesets.fills : tiles;
@@ -141,7 +147,7 @@ let sketch = function(p) {
     let selected_colors =
       tile_opts.mode === 'arrows' || tile_opts.mode === 'zigzags'
         ? cols
-        : p.shuffle(palette.colors).slice(0, 2);
+        : p.shuffle(palette.colors).slice(0, 3);
     let tile_function = tiles[p.floor(p.random() * tiles.length)];
 
     tile_function(p, x, y, dim, ...selected_colors);
