@@ -1,5 +1,4 @@
-//import * as tome from 'chromotome';
-import * as tome from 'bekk-chromotome';
+import * as tome from 'chromotome';
 import * as dat from 'dat.gui';
 import tilesets from './tiles';
 
