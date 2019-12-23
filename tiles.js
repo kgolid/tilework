@@ -118,40 +118,41 @@ const west_half_circle = (p, x, y, dim, c1, c2) => {
   p.arc(x, y + dim / 2, dim, dim, 3 * p.HALF_PI, p.HALF_PI, p.PIE);
 };
 
+const w = 50;
 const two_quarter_circle_stroke_asc = (p, x, y, dim, c1, c2) => {
   p.fill(c2);
   p.rect(x, y, dim, dim);
   p.fill(c1);
-  p.arc(x + dim, y, dim + 6, dim + 6, p.HALF_PI, p.PI, p.PIE);
+  p.arc(x + dim, y, dim + w, dim + w, p.HALF_PI, p.PI, p.PIE);
   p.fill(c2);
-  p.arc(x + dim, y, dim - 6, dim - 6, p.HALF_PI, p.PI, p.PIE);
+  p.arc(x + dim, y, dim - w, dim - w, p.HALF_PI, p.PI, p.PIE);
   p.fill(c1);
-  p.arc(x, y + dim, dim + 6, dim + 6, -p.HALF_PI, 0, p.PIE);
+  p.arc(x, y + dim, dim + w, dim + w, -p.HALF_PI, 0, p.PIE);
   p.fill(c2);
-  p.arc(x, y + dim, dim - 6, dim - 6, -p.HALF_PI, 0, p.PIE);
+  p.arc(x, y + dim, dim - w, dim - w, -p.HALF_PI, 0, p.PIE);
 };
 
 const two_quarter_circle_stroke_desc = (p, x, y, dim, c1, c2) => {
   p.fill(c2);
   p.rect(x, y, dim, dim);
   p.fill(c1);
-  p.arc(x, y, dim + 6, dim + 6, 0, p.HALF_PI, p.PIE);
+  p.arc(x, y, dim + w, dim + w, 0, p.HALF_PI, p.PIE);
   p.fill(c2);
-  p.arc(x, y, dim - 6, dim - 6, 0, p.HALF_PI, p.PIE);
+  p.arc(x, y, dim - w, dim - w, 0, p.HALF_PI, p.PIE);
   p.fill(c1);
-  p.arc(x + dim, y + dim, dim + 6, dim + 6, -p.PI, -p.HALF_PI, p.PIE);
+  p.arc(x + dim, y + dim, dim + w, dim + w, -p.PI, -p.HALF_PI, p.PIE);
   p.fill(c2);
-  p.arc(x + dim, y + dim, dim - 6, dim - 6, -p.PI, -p.HALF_PI, p.PIE);
+  p.arc(x + dim, y + dim, dim - w, dim - w, -p.PI, -p.HALF_PI, p.PIE);
 };
 
 const four_quarter_circle = (p, x, y, dim, c1, c2) => {
   p.fill(c1);
   p.rect(x, y, dim, dim);
   p.fill(c2);
-  p.arc(x, y, dim - 6, dim - 6, 0, p.HALF_PI, p.PIE);
-  p.arc(x + dim, y + dim, dim - 6, dim - 6, -p.PI, -p.HALF_PI, p.PIE);
-  p.arc(x + dim, y, dim - 6, dim - 6, p.HALF_PI, p.PI, p.PIE);
-  p.arc(x, y + dim, dim - 6, dim - 6, -p.HALF_PI, 0, p.PIE);
+  p.arc(x, y, dim - w, dim - w, 0, p.HALF_PI, p.PIE);
+  p.arc(x + dim, y + dim, dim - w, dim - w, -p.PI, -p.HALF_PI, p.PIE);
+  p.arc(x + dim, y, dim - w, dim - w, p.HALF_PI, p.PI, p.PIE);
+  p.arc(x, y + dim, dim - w, dim - w, -p.HALF_PI, 0, p.PIE);
 };
 
 const tilted_cross = (p, x, y, dim, c1, c2) => {
